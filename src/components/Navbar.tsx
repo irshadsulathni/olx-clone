@@ -27,7 +27,7 @@ function Navbar() {
                     <img src={arrow} className="w-8 h-7 cursor-pointer" alt="Arrow Icon" />
                     <img
                         src={favIcon}
-                        className="h-9 w-6 cursor-pointer hover:invert-[20%] hover:sepia-[80%] hover:saturate-[200%] hover:hue-rotate-[90deg]"
+                        className="h-9 w-10 cursor-pointer hover:invert-[20%] hover:sepia-[80%] hover:saturate-[200%] hover:hue-rotate-[90deg]"
                         alt="Favorite Icon"
                     />
                 </div>
