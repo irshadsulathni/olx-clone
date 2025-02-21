@@ -11,7 +11,7 @@ function Navbar() {
 
     return (
         <>
-            <div className="flex items-center ml-2 p-5 space-x-5">
+            <div className="flex items-center ml-2 p-5 space-x-5 bg-slate-100 shadow-md">
                 <img src={olxlogo} className="w-11 h-9 cursor-pointer" alt="OLX Logo" />
                 <div className="flex items-center border-4 border-blue-400 px-3 py-2 w-64 rounded-md">
                     <img src={lens} className="w-6 h-5" alt="Search Icon" />
