@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc"; 
 import { MdPhone, MdClose, MdArrowBackIos, MdArrowForwardIos } from "react-icons/md"; 
 import { FaGuitar, FaBuilding, FaCar } from "react-icons/fa"; 
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase/setup";
+import { userContext } from "./Main";
+interface ILogin{
+    isOpen:boolean;
+    onClose:() => void;
+}
 
-function Login({ isOpen, onClose }) {
+function Login({ isOpen, onClose }:ILogin) {
     const icons = [
         { 
             icon: <FaGuitar className="text-9xl text-blue-500" />, 
@@ -29,17 +34,23 @@ function Login({ isOpen, onClose }) {
     const nextIcon = () => setCurrentIndex((prev) => (prev + 1) % icons.length);
     const prevIcon = () => setCurrentIndex((prev) => (prev - 1 + icons.length) % icons.length);
 
+    const {user,setUser} = useContext(userContext)
+
     if (!isOpen) return null;
-    const googleSignin = async ()=> {
+    const googleSignin = async () => {
         try {
-            await signInWithPopup(auth,googleProvider)
+            const result = await signInWithPopup(auth, googleProvider);
+            console.log('before set',user);
+            setUser(result.user.displayName ?? '')
+            console.log('after set',user);
+            onClose()
         } catch (error) {
-            console.error(error);
+            console.error("Google Sign-In Error: ", error);
         }
-    }
+    };
 
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-10">
             <div className="relative w-full max-w-md bg-white rounded-lg shadow-lg p-6">
                 {/* Close Button with Hover Effect */}
                 <button 
