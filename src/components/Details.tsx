@@ -1,11 +1,10 @@
 import { useLocation } from "react-router-dom";
-import Navbar from "../components/Navbar"; 
-import Footer from "../components/Footer"; 
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import Menubar from "./Menubar";
-import { FaHeart, FaShareAlt, FaUserCircle } from "react-icons/fa"; 
+import { FaHeart, FaShareAlt, FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
 
-// Define type for product data
 interface ProductData {
   image: string;
   title: string;
@@ -16,23 +15,21 @@ interface ProductData {
 
 function Details() {
   const location = useLocation();
-  const { data }: { data?: ProductData } = location.state || {}; 
+  const { data }: { data?: ProductData } = location.state || {};
 
-  // Random seller names
   const sellerNames = ["Ameen", "Fayis", "Abdulla", "Irshad", "Afsal"];
   const randomSeller = sellerNames[Math.floor(Math.random() * sellerNames.length)];
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState('');
   console.log(search);
-  
+
   return (
     <>
       <Navbar setSearch={setSearch} />
       <Menubar />
-      
-      <div className="flex flex-col items-center p-4 md:p-8">
 
+      <div className="flex flex-col items-center p-4 md:p-8">
         {/* Image Section */}
-        <div className="w-full md:w-[70%] bg-slate-200 relative flex justify-center rounded-lg shadow-md p-4">
+        <div className="w-full max-w-3xl bg-slate-200 relative flex justify-center rounded-lg shadow-md p-4">
           {data?.image && (
             <img
               src={data.image}
@@ -53,10 +50,9 @@ function Details() {
         </div>
 
         {/* Product Details & Offer Section */}
-        <div className="w-full flex flex-col md:flex-row gap-x-8 mt-6 max-w-6xl">
-          
-          {/* Product Details (Left - 60%) */}
-          <div className="w-full md:w-[60%] p-6 border border-gray-300 rounded-lg shadow-lg">
+        <div className="w-full flex flex-col lg:flex-row gap-x-8 mt-6 max-w-6xl">
+          {/* Product Details (Left) */}
+          <div className="w-full lg:w-3/5 p-6 border border-gray-300 rounded-lg shadow-lg">
             <h1 className="text-2xl md:text-3xl font-semibold text-gray-800">
               {data?.title || "No Title Available"}
             </h1>
@@ -64,13 +60,13 @@ function Details() {
             <p className="text-xl font-bold text-red-500 mt-2">
               Price: ₹ {data?.price ? Math.floor(data.price * 80) : "N/A"}
             </p>
-            <h3 className="mt-4 text-lg leading-relaxed text-gray-700 italic bg-gray-100 p-4 rounded-lg shadow-md border-l-4 border-green-500" >The quick brown fox jumps over the lazy dog. Beneath the twilight sky, whispers of the wind carried echoes of forgotten tales. In a distant land, a hidden library held secrets long lost to time. Stars shimmered above as the clock struck midnight, revealing paths unknown to wandering souls. Somewhere in the heart of the city, a neon sign flickered, casting an eerie glow on the empty streets. A mysterious letter arrived at the doorstep, sealed with crimson wax, bearing an insignia of an ancient orde</h3>
+            <h3 className="mt-4 text-lg leading-relaxed text-gray-700 italic bg-gray-100 p-4 rounded-lg shadow-md border-l-4 border-green-500">
+            A laptop is a portable personal computer that combines all the essential components of a desktop computer, such as a display, keyboard, processor, and storage, into a single compact device. Laptops are designed for portability, making them ideal for work, study, and entertainment on the go. They typically feature built-in Wi-Fi, Bluetooth, and USB ports for connectivity, and come with either solid-state drives (SSD) or hard drives (HDD) for data storage. The screen size of a laptop generally ranges from 11 to 17 inches, and it is powered by a rechargeable battery, allowing for hours of use without needing to be plugged into an outlet
+            </h3>
           </div>
 
-          {/* Make an Offer (Right - 40%) */}
-          <div className="w-full md:w-[40%] p-6 border border-gray-300 rounded-lg shadow-lg bg-gray-100 flex flex-col">
-            
-            {/* Offer Price */}
+          {/* Offer Section (Right) */}
+          <div className="w-full lg:w-2/5 p-6 border border-gray-300 rounded-lg shadow-lg bg-gray-100 flex flex-col">
             <p className="text-4xl font-bold text-green-900">
               ₹ {data?.price ? Math.floor(Math.random() * (data.price * 80)) : "N/A"}
             </p>
@@ -90,14 +86,14 @@ function Details() {
             </button>
 
             {/* Google Maps API Error Message */}
-            <div className="mt-4 bg-black text-white font-mono p-3 rounded-lg border border-gray-400">
-              Google Maps Platform rejected your request. This IP, site or mobile application is not authorized to use this API key. Request received from IP address 202.164.149.48, with referer: https://www.olx.in/en-in/item/cars-c84-used-bmw-x1-in-kannur-mangaluru-iid-1798643312
+            <div className="mt-4 bg-black text-white font-mono p-3 rounded-lg border border-gray-400 text-sm">
+            Google Maps Platform rejected your request. This IP, site or mobile application is not authorized to use this API key. Request received from IP address 202.164.149.48, with referer: https://www.olx.in/en-in/item/motorcycles-c81-used-hero-splendor-in-samudrapur-maharashtra-iid-1796708872
             </div>
           </div>
         </div>
 
-        {/* Description Section (Same width as Offer div) */}
-        <div className="w-full md:w-[38%] mt-6 mr-[45vh] bg-slate-200 relative flex justify-center rounded-lg shadow-md p-4">
+        {/* Description Section */}
+        <div className="w-full lg:w-2/5 mt-6 bg-slate-200 rounded-lg shadow-md p-4">
           <ul className="list-disc text-lg list-inside text-gray-700 mt-3">
             {data?.description
               ? data.description.split('.').map((point, index) =>
@@ -106,7 +102,6 @@ function Details() {
               : <p className="text-gray-500">No description available.</p>}
           </ul>
         </div>
-
       </div>
 
       <Footer />

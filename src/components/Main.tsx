@@ -34,14 +34,12 @@ function Main() {
         <Home products={product} search={search} />
         
         {/* Load More Button */}
-        <div className="flex items-center justify-center mt-24">
-          <button className="relative px-4 py-2 rounded-md text-black bg-white border-2 border-black transition-all duration-200 
-                            hover:shadow-[inset_0_0_0_2px_black]">
-            Load More
-          </button>
-        </div>
-
-        
+          <div className="flex items-center justify-center mt-24">
+            <button className="relative px-4 py-2 rounded-md text-black bg-white border-2 border-black transition-all duration-200 
+              hover:shadow-[inset_0_0_0_2px_black]">
+              Load More
+            </button>
+          </div>
         <Footer />
       </userContext.Provider>
     </div>
