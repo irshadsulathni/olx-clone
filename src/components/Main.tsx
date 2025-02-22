@@ -13,6 +13,8 @@ export const userContext = createContext<{
 function Main() {
   const [user, setUser] = useState<string | null>(null);
   const [product, setProduct] = useState([]);
+  const [search, setSearch] = useState("")
+
 
   const getProducts = () => {
     fetch("https://fakestoreapi.com/products")
@@ -27,9 +29,9 @@ function Main() {
   return (
     <div>
       <userContext.Provider value={{ user, setUser }}>
-        <Navbar />
+        <Navbar setSearch={setSearch} />
         <Menubar />
-        <Home products={product} />
+        <Home products={product} search={search} />
         
         {/* Load More Button */}
         <div className="flex items-center justify-center mt-24">

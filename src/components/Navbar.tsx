@@ -7,7 +7,11 @@ import favIcon from '../assets/fav.jpg';
 import Login from './Login';
 import { userContext } from "./Main";
 
-function Navbar() {
+type searchProp = {
+    setSearch:(value:string) => void;
+}
+
+function Navbar(props:searchProp) {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const { user, setUser } = useContext(userContext);
@@ -27,7 +31,7 @@ function Navbar() {
 
                 {/* Search Input */}
                 <div className="hidden md:flex items-center border-4 border-black px-3 py-2 w-[40rem] rounded-md">
-                    <input placeholder="Find Cars, Bikes, Mobile Phones..." className="flex-grow outline-none" />
+                    <input onChange={(e)=> props?.setSearch(e.target.value) } placeholder="Find Cars, Bikes, Mobile Phones..." className="flex-grow outline-none" />
                     <img src={search} className="w-7 cursor-pointer" alt="Search Background" />
                 </div>
 
