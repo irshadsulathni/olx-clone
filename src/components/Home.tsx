@@ -11,7 +11,7 @@ type Product = {
 
 type ProductsProp = {
   products?: Product[];
-  search: string;  // Ensure search is properly passed as a prop
+  search: string;
 };
 
 function Home({ products = [], search }: ProductsProp) {
@@ -27,7 +27,7 @@ function Home({ products = [], search }: ProductsProp) {
           .filter((data) => data?.title?.toLowerCase().includes(search.toLowerCase())) // Fix search filtering
           .map((data, index) => (
             <Link to="details" state={{ data }} key={index}>
-              <div className="relative border p-4 shadow-lg rounded-lg hover:shadow-xl transition">
+              <div className="relative border p-4 shadow-lg rounded-lg hover:shadow-xl transition flex flex-col h-full">
                 {/* Favorite Icon at Top-Right */}
                 <img
                   src={favicon}
@@ -38,12 +38,12 @@ function Home({ products = [], search }: ProductsProp) {
                 {/* Product Image */}
                 <img
                   src={data.image}
-                  className="cursor-pointer w-32 h-32 sm:w-40 sm:h-40 mx-auto"
+                  className="cursor-pointer w-full h-40 object-cover rounded-md mx-auto"
                   alt="Product"
                 />
 
                 {/* Product Details */}
-                <div className="mt-2">
+                <div className="mt-2 flex flex-col justify-between flex-grow">
                   <h1 className="font-bold text-base sm:text-lg">
                     ₹ {Math.floor(data.price * 80)}
                   </h1>
