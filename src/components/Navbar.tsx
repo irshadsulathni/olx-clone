@@ -9,8 +9,7 @@ import { userContext } from "./Main";
 
 function Navbar() {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
-
-    const {user,setUser} = useContext(userContext)
+    const { user, setUser } = useContext(userContext);
 
     return (
         <>
@@ -31,8 +30,8 @@ function Navbar() {
                     <img src={search} className="w-7 cursor-pointer" alt="Search Background" />
                 </div>
 
-                {/* Language and Favorite Icon */}
-                <div className="flex items-center space-x-3">
+                {/* Language & Favorite Icon */}
+                <div className="flex items-center gap-x-6">
                     <div className="flex items-center space-x-2">
                         <h1 className="font-semibold">English</h1>
                         <img src={arrow} className="w-6 h-5 cursor-pointer" alt="Arrow Icon" />
@@ -44,23 +43,30 @@ function Navbar() {
                     />
                 </div>
 
-                {/* Login Button */}
-                {user ? (
-                    <div>
-                        <h1 className="font-bold text-lg underline cursor-pointer hover:no-underline">
-                            {user}
-                        </h1>
-                        <button onClick={()=> setUser(null)} >Logout</button>
-                    </div>
-                ) : (
-                    <h1
-                        className="font-bold text-lg underline cursor-pointer hover:no-underline"
-                        onClick={() => setIsLoginOpen(true)}
-                    >
-                        Login
-                    </h1>
-                )}
+                {/* Login / Logout */}
+                <div className="flex items-center gap-x-6">
+                    {user ? (
+                        <div className="flex items-center space-x-4">
+                            <h1 className="font-bold text-lg underline cursor-pointer hover:no-underline">
+                                {user}
+                            </h1>
+                            <button 
+                                onClick={() => setUser(null)}
+                                className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold shadow-md hover:from-red-500 hover:to-red-700 hover:text-white transition-all duration-300 transform hover:scale-105"
+                            >
+                                Logout
+                            </button>
 
+                        </div>
+                    ) : (
+                        <h1
+                            className="font-bold text-lg underline cursor-pointer hover:no-underline"
+                            onClick={() => setIsLoginOpen(true)}
+                        >
+                            Login
+                        </h1>
+                    )}
+                </div>
 
                 {/* Sell Button */}
                 <div
