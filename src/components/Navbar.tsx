@@ -10,7 +10,7 @@ import { userContext } from "./Main";
 function Navbar() {
     const [isLoginOpen, setIsLoginOpen] = useState(false);
 
-    const {user} = useContext(userContext)
+    const {user,setUser} = useContext(userContext)
 
     return (
         <>
@@ -46,9 +46,12 @@ function Navbar() {
 
                 {/* Login Button */}
                 {user ? (
-                    <h1 className="font-bold text-lg underline cursor-pointer hover:no-underline">
-                        {user}
-                    </h1>
+                    <div>
+                        <h1 className="font-bold text-lg underline cursor-pointer hover:no-underline">
+                            {user}
+                        </h1>
+                        <button onClick={()=> setUser(null)} >Logout</button>
+                    </div>
                 ) : (
                     <h1
                         className="font-bold text-lg underline cursor-pointer hover:no-underline"

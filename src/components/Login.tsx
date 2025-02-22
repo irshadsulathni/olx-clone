@@ -41,7 +41,7 @@ function Login({ isOpen, onClose }:ILogin) {
         try {
             const result = await signInWithPopup(auth, googleProvider);
             console.log('before set',user);
-            setUser(result.user.displayName ?? '')
+            setUser(result.user.displayName)
             console.log('after set',user);
             onClose()
         } catch (error) {

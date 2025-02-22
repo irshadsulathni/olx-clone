@@ -32,7 +32,7 @@ function Home(props: ProductsProp) {
 
             {/* Product Details */}
             <div className="mt-2">
-              <h1 className="font-bold text-lg">₹ {data?.price}</h1>
+              <h1 className="font-bold text-lg">₹ {Math.floor(data?.price * 80)}</h1>
               <h1 className="text-gray-700">{data?.title}</h1>
               <h1 className="text-gray-500">{data?.category}</h1>
             </div>

@@ -9,9 +9,9 @@ import bikewale from '../assets/bikewale.png'
 
 function Footer() {
   return (
-    <div className="mt-[250px] mx-[150px]">
+    <div className="mt-[120px]">
       {/* Footer Content in Grid Format */}
-      <div className="bg-slate-300 p-10 rounded-md grid grid-cols-5 gap-x-10">
+      <div className="bg-slate-300 p-10 grid grid-cols-5 gap-x-10">
         {/* Popular Locations */}
         <div>
           <h1 className="text-sm font-bold mb-2">Popular Locations</h1>
@@ -77,7 +77,7 @@ function Footer() {
       </div>
 
       {/* Copyright Section */}
-      <div className="bg-cyan-950 text-white py-6 rounded-md flex flex-col items-center mt-6">
+      <div className="bg-cyan-950 text-white py-6 flex flex-col items-center">
         {/* Logos Section */}
         <div className="flex items-center space-x-8">
           <img className="h-16" src={carTrade} alt="Car Trade logo" />
